@@ -42,13 +42,6 @@ def ask_question():
             "error": str(e)
         }), 500
 
-@app.route('/api/demo-questions', methods=['GET'])
-def get_demo_questions():
-    """Get list of demo questions for testing"""
-    return jsonify({
-        "success": True,
-        "questions": Config.DEMO_QUESTIONS
-    })
 
 # Frontend routes
 @app.route('/')

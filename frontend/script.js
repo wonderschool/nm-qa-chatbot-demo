@@ -8,7 +8,6 @@ class Chatbot {
     }
     
     initializeElements() {
-        this.loadDemoBtn = document.getElementById('loadDemoBtn');
         this.statusDiv = document.getElementById('status');
         this.questionInput = document.getElementById('questionInput');
         this.sendBtn = document.getElementById('sendBtn');
@@ -16,7 +15,6 @@ class Chatbot {
     }
     
     attachEventListeners() {
-        this.loadDemoBtn.addEventListener('click', () => this.loadDemoQuestions());
         this.sendBtn.addEventListener('click', () => this.sendQuestion());
         this.questionInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && !this.isProcessing) {
@@ -30,33 +28,6 @@ class Chatbot {
         this.statusDiv.className = `status ${type}`;
     }
     
-    
-    async loadDemoQuestions() {
-        try {
-            const response = await fetch(`${this.apiBase}/demo-questions`);
-            const data = await response.json();
-            
-            if (data.success && data.questions.length > 0) {
-                this.demoQuestionsList.innerHTML = '';
-                data.questions.forEach(question => {
-                    const questionDiv = document.createElement('div');
-                    questionDiv.className = 'demo-question';
-                    questionDiv.textContent = question;
-                    questionDiv.addEventListener('click', () => {
-                        this.questionInput.value = question;
-                        this.questionInput.focus();
-                    });
-                    this.demoQuestionsList.appendChild(questionDiv);
-                });
-                this.demoQuestions.style.display = 'block';
-                this.updateStatus('Demo questions loaded', 'success');
-            } else {
-                this.updateStatus('No demo questions configured', 'info');
-            }
-        } catch (error) {
-            this.updateStatus(`Error loading demo questions: ${error.message}`, 'error');
-        }
-    }
     
     async sendQuestion() {
         const question = this.questionInput.value.trim();

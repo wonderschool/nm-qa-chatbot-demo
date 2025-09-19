@@ -35,18 +35,11 @@ OPENAI_MODEL=gpt-5
 Edit `config.py` and add:
 
 - **Document URLs**: Add the webpages you want the chatbot to process
-- **Demo Questions**: Add questions to test the chatbot
-
 Example:
 ```python
 DOCUMENT_URLS = [
     "https://example.com/page1",
     "https://example.com/page2",
-]
-
-DEMO_QUESTIONS = [
-    "What is the main topic of the documents?",
-    "How do I contact support?",
 ]
 ```
 
@@ -65,7 +58,6 @@ The application will be available at `http://localhost:5000` - both the frontend
 
 1. **Process Documents**: Click "Process Documents" to scrape and process your configured URLs
 2. **Ask Questions**: Type questions in the chat interface
-3. **Demo Questions**: Click "Load Demo Questions" to see pre-configured test questions
 
 ## Project Structure
 
