@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonderschool AI Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with State Logo -->
+        <header class="main-header">
+            <div class="state-logo">
+                <div class="logo-icon">
+                    <img src="newmexico__logo_large.png" alt="New Mexico Logo" class="logo-image">
+                    <div class="logo-text">
+                        <div class="org-name">Child Care Finder</div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-content"">
+                <h1>New Mexico Child Care Finder Virtual Assistant</h1>
+                <div class="ai-status">
+                    <div class="status-indicator online"></div>
+                    <span>AI Online</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Chat Interface -->
+        <main class="main-content">
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Initial AI Assistant message -->
+                    <div class="message ai-message">
+                        <div class="message-header">
+                            <div class="message-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="message-info">
+                                <div class="sender-name">AI Assistant</div>
+                            </div>
+                            <div class="message-status">
+                                <div class="status-indicator online"></div>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            Hello! I'm your AI assistant for the New Mexico Child Care Finder. Ask me any questions you have related to child care in New Mexico.
+                        </div>
+                        <div class="message-timestamp">Just now</div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="chat-input">
+                        <button class="emoji-btn">
+                            <i class="fas fa-smile"></i>
+                        </button>
+                        <input type="text" id="questionInput" placeholder="Type your message here...">
+                        <button id="sendBtn" class="send-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden controls for knowledge loading -->
+            <div class="hidden-controls" style="display: none;">
+                <button id="processDocsBtn" class="btn btn-primary">Load Knowledge</button>
+                <button id="loadDemoBtn" class="btn btn-secondary">Load Demo Questions</button>
+                <div id="status" class="status"></div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
