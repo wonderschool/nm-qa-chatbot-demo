@@ -13,6 +13,7 @@ class QAService:
         self.client = OpenAI(api_key=Config.OPENAI_API_KEY)
         self.model = Config.OPENAI_MODEL
         self.messages = [{"role": "system", "content": get_system_prompt()}]
+        print(self.messages[0]['content'])
     
     def answer_question(self, question: str) -> str:
         """Generate an answer based on the question"""

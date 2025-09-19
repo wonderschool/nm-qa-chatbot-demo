@@ -1,6 +1,6 @@
 class Chatbot {
     constructor() {
-        this.apiBase = 'http://localhost:5000/api';
+        this.apiBase = 'http://localhost:5001/api';
         this.isProcessing = false;
         this.overlayShown = false;
         
