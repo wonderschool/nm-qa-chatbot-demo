@@ -2,9 +2,11 @@ class Chatbot {
     constructor() {
         this.apiBase = 'http://localhost:5000/api';
         this.isProcessing = false;
+        this.overlayShown = false;
         
         this.initializeElements();
         this.attachEventListeners();
+        this.initializeOverlay();
     }
     
     initializeElements() {
@@ -12,6 +14,7 @@ class Chatbot {
         this.questionInput = document.getElementById('questionInput');
         this.sendBtn = document.getElementById('sendBtn');
         this.chatMessages = document.getElementById('chatMessages');
+        this.overlay = document.getElementById('imageOverlay');
     }
     
     attachEventListeners() {
@@ -21,6 +24,39 @@ class Chatbot {
                 this.sendQuestion();
             }
         });
+    }
+    
+    initializeOverlay() {
+        // Always show overlay on page load
+        if (this.overlay) {
+            this.overlay.style.display = 'flex';
+            this.overlayShown = true;
+            
+            // Add click event listener to hide overlay
+            this.overlay.addEventListener('click', () => {
+                this.hideOverlay();
+            });
+            
+            // Add keyboard event listener for accessibility
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+                    this.hideOverlay();
+                }
+            });
+        }
+    }
+    
+    hideOverlay() {
+        if (this.overlay && this.overlayShown) {
+            this.overlay.classList.add('hidden');
+            
+            // Remove overlay from DOM after animation completes
+            setTimeout(() => {
+                this.overlay.style.display = 'none';
+            }, 500);
+            
+            this.overlayShown = false;
+        }
     }
     
     updateStatus(message, type = 'info') {
